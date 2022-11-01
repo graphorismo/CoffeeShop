@@ -1,11 +1,12 @@
-package ru.graphorismo.coffeeshop
+package ru.graphorismo.coffeeshop.ui.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import ru.graphorismo.coffeeshop.R
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
     }
 }
