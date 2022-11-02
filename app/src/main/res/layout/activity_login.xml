@@ -20,7 +20,7 @@
 
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/activityLogin_editText_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -40,7 +40,7 @@
         android:padding="6dp"/>
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/activityLogin_editText_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -50,7 +50,7 @@
         android:background="@color/white"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/activityLogin_button_signIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SIGN IN"
@@ -59,7 +59,7 @@
         android:backgroundTint="@color/coffee"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/activityLogin_button_signUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SIGN UP"
