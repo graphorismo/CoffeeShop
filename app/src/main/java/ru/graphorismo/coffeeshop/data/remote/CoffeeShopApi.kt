@@ -10,7 +10,7 @@ import ru.graphorismo.coffeeshop.data.auth.Credentials
 
 interface CoffeeShopApi {
 
-    @POST("login")
+    @POST("/login")
     suspend fun pushLoginPost(@Body credentials: Credentials): Response<AuthResponse>
 
 }

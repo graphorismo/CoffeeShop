@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class AuthRepository @Inject constructor(var coffeeShopApi: CoffeeShopApi) {
 
-    suspend fun tryToLogin(credentials: Credentials) : Response<AuthResponse> {
+    suspend fun getResponseToLogin(credentials: Credentials) : Response<AuthResponse> {
         return coffeeShopApi.pushLoginPost(credentials)
     }
 }
