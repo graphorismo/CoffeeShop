@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ru.graphorismo.coffeeshop.data.auth.AuthResponse
 import ru.graphorismo.coffeeshop.data.auth.Credentials
+import ru.graphorismo.coffeeshop.data.auth.RegistrateResponse
 import ru.graphorismo.coffeeshop.data.remote.NetworkException
 import ru.graphorismo.coffeeshop.data.repositories.AuthRepository
 import javax.inject.Inject
@@ -19,7 +20,10 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(val authRepository: AuthRepository) : ViewModel() {
 
     var credentials: Credentials = Credentials("","")
-    var authResponse = MutableStateFlow<AuthResponse>(AuthResponse(result = "", token = ""))
+    var authResponse =
+        MutableStateFlow<AuthResponse>(AuthResponse(result = "", token = ""))
+    var registrateResponse =
+        MutableStateFlow<RegistrateResponse>(RegistrateResponse(status = ""))
 
     fun tryToLogIn(credentials: Credentials){
         this.credentials = credentials
@@ -29,6 +33,18 @@ class LoginViewModel @Inject constructor(val authRepository: AuthRepository) : V
                 authResponse.value = response.body()!!
             }else{
                 authResponse.value = AuthResponse("error", "")
+            }
+        }
+    }
+
+    fun tryToRegistrate(credentials: Credentials) {
+        this.credentials = credentials
+        viewModelScope.launch(Dispatchers.Default) {
+            var response = authRepository.getResponseToRegistration(credentials)
+            if (response.isSuccessful && response.body() != null){
+                registrateResponse.value = response.body()!!
+            }else{
+                registrateResponse.value = RegistrateResponse(status = "error")
             }
         }
     }
