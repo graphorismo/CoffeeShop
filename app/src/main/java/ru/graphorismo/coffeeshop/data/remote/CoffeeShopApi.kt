@@ -12,9 +12,9 @@ import ru.graphorismo.coffeeshop.data.auth.RegistrateResponse
 interface CoffeeShopApi {
 
     @POST("/login")
-    suspend fun pushLoginPost(@Body credentials: Credentials): Response<AuthResponse>
+    suspend fun pushLoginPost(@Body credentials: Credentials): AuthResponse
 
     @POST("/registrate")
-    suspend fun pushRegistratePost(@Body credentials: Credentials): Response<RegistrateResponse>
+    suspend fun pushRegistratePost(@Body credentials: Credentials): RegistrateResponse
 
 }

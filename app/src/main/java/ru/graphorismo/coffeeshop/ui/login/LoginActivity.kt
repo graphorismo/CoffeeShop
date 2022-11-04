@@ -14,7 +14,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import ru.graphorismo.coffeeshop.R
+import ru.graphorismo.coffeeshop.data.auth.AuthResponse
 import ru.graphorismo.coffeeshop.data.auth.Credentials
+import ru.graphorismo.coffeeshop.data.auth.RegistrateResponse
 import ru.graphorismo.coffeeshop.ui.products.ProductsActivity
 
 
@@ -60,7 +62,10 @@ class LoginActivity : AppCompatActivity() {
         lifecycleScope.launch() {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 loginViewModel.authResponse.collect() {
-                    if (it.result == "ok") {
+                    if (it.result == "none"){
+                        //none
+                    }
+                    else if (it.result == "ok") {
                         val productsIntent =
                             Intent(this@LoginActivity, ProductsActivity::class.java)
                         productsIntent
@@ -78,6 +83,7 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(this@LoginActivity, "Network error", Toast.LENGTH_LONG)
                             .show()
                     }
+                    loginViewModel.authResponse.value = AuthResponse(result = "none", "")
                 }
             }
         }
@@ -87,7 +93,10 @@ class LoginActivity : AppCompatActivity() {
         lifecycleScope.launch() {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 loginViewModel.registrateResponse.collect() {
-                    if (it.status == "ok") {
+                    if (it.status == "none"){
+                        //none
+                    }
+                    else if (it.status == "ok") {
                         Toast.makeText(
                             this@LoginActivity,
                             "Registration successful",
@@ -105,6 +114,7 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(this@LoginActivity, "Network error", Toast.LENGTH_LONG)
                             .show()
                     }
+                    loginViewModel.registrateResponse.value= RegistrateResponse(status="none")
                 }
             }
         }

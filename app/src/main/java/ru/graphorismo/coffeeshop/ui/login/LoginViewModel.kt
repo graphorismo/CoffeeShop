@@ -28,24 +28,14 @@ class LoginViewModel @Inject constructor(val authRepository: AuthRepository) : V
     fun tryToLogIn(credentials: Credentials){
         this.credentials = credentials
         viewModelScope.launch(Dispatchers.Default) {
-            var response = authRepository.getResponseToLogin(credentials)
-            if (response.isSuccessful && response.body() != null){
-                authResponse.value = response.body()!!
-            }else{
-                authResponse.value = AuthResponse("error", "")
-            }
+            authResponse.value = authRepository.getResponseToLogin(credentials)
         }
     }
 
     fun tryToRegistrate(credentials: Credentials) {
         this.credentials = credentials
         viewModelScope.launch(Dispatchers.Default) {
-            var response = authRepository.getResponseToRegistration(credentials)
-            if (response.isSuccessful && response.body() != null){
-                registrateResponse.value = response.body()!!
-            }else{
-                registrateResponse.value = RegistrateResponse(status = "error")
-            }
+            registrateResponse.value = authRepository.getResponseToRegistration(credentials)
         }
     }
 
