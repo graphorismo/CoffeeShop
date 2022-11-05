@@ -6,18 +6,34 @@ import javax.inject.Inject
 
 class ProductsRepository @Inject constructor(private var coffeeShopApi: CoffeeShopApi)  {
     suspend fun getAlcoholProducts(): List<Product> {
-        return coffeeShopApi.getProductsOfType("alcohol")
+        try{
+            return coffeeShopApi.getProductsOfType("alcohol")
+        }catch (ex: Exception){
+            return listOf()
+        }
     }
 
     suspend fun getMilkshakesProducts(): List<Product> {
-        return coffeeShopApi.getProductsOfType("milkshakes")
+        try{
+            return coffeeShopApi.getProductsOfType("milkshakes")
+        }catch (ex: Exception){
+            return listOf()
+        }
     }
 
     suspend fun getSnacksProducts(): List<Product> {
-        return coffeeShopApi.getProductsOfType("snacks")
+        try{
+            return coffeeShopApi.getProductsOfType("snacks")
+        }catch (ex: Exception){
+            return listOf()
+        }
     }
 
     suspend fun getCoffeeProducts(): List<Product> {
-        return coffeeShopApi.getProductsOfType("coffee")
+        try{
+            return coffeeShopApi.getProductsOfType("coffee")
+        }catch (ex: Exception){
+            return listOf()
+        }
     }
 }
