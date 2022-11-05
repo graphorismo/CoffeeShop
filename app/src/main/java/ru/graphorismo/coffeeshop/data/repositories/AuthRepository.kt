@@ -11,9 +11,13 @@ import kotlin.Exception
 
 class AuthRepository @Inject constructor(var coffeeShopApi: CoffeeShopApi) {
 
+    var token: String = ""
+
     suspend fun getResponseToLogin(credentials: Credentials) : AuthResponse {
         try {
-            return coffeeShopApi.pushLoginPost(credentials)
+            var response = coffeeShopApi.pushLoginPost(credentials)
+            token = response.token
+            return response
         }catch (ex: Exception){
             return AuthResponse("error", "")
         }

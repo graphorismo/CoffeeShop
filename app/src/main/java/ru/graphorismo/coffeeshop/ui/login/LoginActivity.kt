@@ -68,8 +68,6 @@ class LoginActivity : AppCompatActivity() {
                     else if (it.result == "ok") {
                         val productsIntent =
                             Intent(this@LoginActivity, ProductsActivity::class.java)
-                        productsIntent
-                            .putExtra("TOKEN", loginViewModel.authResponse.value.token)
                         startActivity(productsIntent)
                     }
                     else if (it.result == "deny") {

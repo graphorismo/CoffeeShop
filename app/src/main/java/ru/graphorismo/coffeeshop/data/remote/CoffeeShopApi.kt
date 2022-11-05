@@ -15,7 +15,8 @@ import ru.graphorismo.coffeeshop.data.products.Product
 interface CoffeeShopApi {
 
     @GET("/products")
-    suspend fun getProductsOfType(@Query("type") type: String): List<Product>
+    suspend fun getProductsOfType(@Query("token") token: String,
+                                  @Query("type") type: String): List<Product>
 
     @POST("/login")
     suspend fun pushLoginPost(@Body credentials: Credentials): AuthResponse

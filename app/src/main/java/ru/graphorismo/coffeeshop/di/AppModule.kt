@@ -20,6 +20,7 @@ object AppModule {
         return AuthRepository(coffeeShopApi)
     }
 
+    @Singleton
     @Provides
     fun provideCoffeeShopApi(): CoffeeShopApi{
         var retrofit = Retrofit.Builder()
