@@ -8,11 +8,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.graphorismo.coffeeshop.data.remote.CoffeeShopApi
 import ru.graphorismo.coffeeshop.data.repositories.AuthRepository
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
+    @Singleton
     @Provides
     fun provideAuthRepository(coffeeShopApi: CoffeeShopApi) : AuthRepository{
         return AuthRepository(coffeeShopApi)
