@@ -7,6 +7,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import ru.graphorismo.coffeeshop.R
 import ru.graphorismo.coffeeshop.data.products.Product
 
@@ -16,7 +17,7 @@ class ProductsRecyclerAdapter(var productsViewModel: ProductsViewModel):
     var items : List<Product> = listOf()
 
     inner class ProductsRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var productImage =
+        var productImage : ImageView =
             itemView.findViewById<ImageView>(R.id.productsRecyclerItem_imageView_product)
         var productDescription =
             itemView.findViewById<TextView>(R.id.productsRecyclerItem_textView_description)
@@ -34,6 +35,7 @@ class ProductsRecyclerAdapter(var productsViewModel: ProductsViewModel):
     override fun onBindViewHolder(holder: ProductsRecyclerViewHolder, position: Int) {
         holder.productDescription.text =
             items[position].name + "\nPrice:" + items[position].price
+        holder.productImage.load(items[position].pictureUrl)
     }
 
     override fun getItemCount(): Int {
