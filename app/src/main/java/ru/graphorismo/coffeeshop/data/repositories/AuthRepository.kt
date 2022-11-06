@@ -1,9 +1,9 @@
 package ru.graphorismo.coffeeshop.data.repositories
 
 
-import ru.graphorismo.coffeeshop.data.auth.AuthResponse
+import ru.graphorismo.coffeeshop.data.remote.AuthResponse
 import ru.graphorismo.coffeeshop.data.auth.Credentials
-import ru.graphorismo.coffeeshop.data.auth.RegistrateResponse
+import ru.graphorismo.coffeeshop.data.remote.RegistrateResponse
 import ru.graphorismo.coffeeshop.data.remote.CoffeeShopApi
 import javax.inject.Inject
 import kotlin.Exception

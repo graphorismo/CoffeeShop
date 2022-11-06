@@ -8,11 +8,28 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.graphorismo.coffeeshop.data.remote.CoffeeShopApi
 import ru.graphorismo.coffeeshop.data.repositories.AuthRepository
+import ru.graphorismo.coffeeshop.data.repositories.CartRepository
+import ru.graphorismo.coffeeshop.data.repositories.ProductsRepository
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+
+    @Singleton
+    @Provides
+    fun provideCartRepository(authRepository: AuthRepository,
+                              coffeeShopApi: CoffeeShopApi) : CartRepository{
+        return CartRepository(authRepository, coffeeShopApi)
+    }
+
+    @Singleton
+    @Provides
+    fun provideProductsRepository(authRepository: AuthRepository,
+                                  coffeeShopApi: CoffeeShopApi) : ProductsRepository{
+        return ProductsRepository(authRepository, coffeeShopApi)
+    }
 
     @Singleton
     @Provides

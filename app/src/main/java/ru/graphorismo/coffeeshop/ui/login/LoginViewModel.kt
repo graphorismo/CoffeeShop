@@ -1,18 +1,14 @@
 package ru.graphorismo.coffeeshop.ui.login
 
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import ru.graphorismo.coffeeshop.data.auth.AuthResponse
+import ru.graphorismo.coffeeshop.data.remote.AuthResponse
 import ru.graphorismo.coffeeshop.data.auth.Credentials
-import ru.graphorismo.coffeeshop.data.auth.RegistrateResponse
-import ru.graphorismo.coffeeshop.data.remote.NetworkException
+import ru.graphorismo.coffeeshop.data.remote.RegistrateResponse
 import ru.graphorismo.coffeeshop.data.repositories.AuthRepository
 import javax.inject.Inject
 

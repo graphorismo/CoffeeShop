@@ -4,34 +4,35 @@ import ru.graphorismo.coffeeshop.data.products.Product
 import ru.graphorismo.coffeeshop.data.remote.CoffeeShopApi
 import javax.inject.Inject
 
-class ProductsRepository @Inject constructor(private var coffeeShopApi: CoffeeShopApi)  {
-    suspend fun getAlcoholProducts(token: String): List<Product> {
+class ProductsRepository @Inject constructor(private var authRepository: AuthRepository,
+                                             private var coffeeShopApi: CoffeeShopApi)  {
+    suspend fun getAlcoholProducts(): List<Product> {
         try{
-            return coffeeShopApi.getProductsOfType(token,"alcohol")
+            return coffeeShopApi.getProductsOfType(authRepository.token,"alcohol")
         }catch (ex: Exception){
             return listOf()
         }
     }
 
-    suspend fun getMilkshakesProducts(token: String): List<Product> {
+    suspend fun getMilkshakesProducts(): List<Product> {
         try{
-            return coffeeShopApi.getProductsOfType(token,"milkshakes")
+            return coffeeShopApi.getProductsOfType(authRepository.token,"milkshakes")
         }catch (ex: Exception){
             return listOf()
         }
     }
 
-    suspend fun getSnacksProducts(token: String): List<Product> {
+    suspend fun getSnacksProducts(): List<Product> {
         try{
-            return coffeeShopApi.getProductsOfType(token,"snacks")
+            return coffeeShopApi.getProductsOfType(authRepository.token,"snacks")
         }catch (ex: Exception){
             return listOf()
         }
     }
 
-    suspend fun getCoffeeProducts(token: String): List<Product> {
+    suspend fun getCoffeeProducts(): List<Product> {
         try{
-            return coffeeShopApi.getProductsOfType(token,"coffee")
+            return coffeeShopApi.getProductsOfType(authRepository.token,"coffee")
         }catch (ex: Exception){
             return listOf()
         }

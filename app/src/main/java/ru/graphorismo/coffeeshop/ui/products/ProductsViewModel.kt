@@ -13,8 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProductsViewModel @Inject constructor(
-    private val productsRepository: ProductsRepository,
-    private val authRepository: AuthRepository)
+    private val productsRepository: ProductsRepository)
     : ViewModel()
 {
     lateinit var coffeeProducts: List<Product>
@@ -27,10 +26,10 @@ class ProductsViewModel @Inject constructor(
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            coffeeProducts = productsRepository.getCoffeeProducts(authRepository.token)
-            snacksProducts = productsRepository.getSnacksProducts(authRepository.token)
-            milkshakesProducts = productsRepository.getMilkshakesProducts(authRepository.token)
-            alcoholProducts = productsRepository.getAlcoholProducts(authRepository.token)
+            coffeeProducts = productsRepository.getCoffeeProducts()
+            snacksProducts = productsRepository.getSnacksProducts()
+            milkshakesProducts = productsRepository.getMilkshakesProducts()
+            alcoholProducts = productsRepository.getAlcoholProducts()
 
             showProducts.value = coffeeProducts
             showState.value = UiState.COFFEE_PRODUCTS
