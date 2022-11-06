@@ -2,7 +2,6 @@ package ru.graphorismo.coffeeshop.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -14,9 +13,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import ru.graphorismo.coffeeshop.R
-import ru.graphorismo.coffeeshop.data.auth.AuthResponse
+import ru.graphorismo.coffeeshop.data.remote.AuthResponse
 import ru.graphorismo.coffeeshop.data.auth.Credentials
-import ru.graphorismo.coffeeshop.data.auth.RegistrateResponse
+import ru.graphorismo.coffeeshop.data.remote.RegistrateResponse
 import ru.graphorismo.coffeeshop.ui.products.ProductsActivity
 
 

@@ -1,11 +1,8 @@
 package ru.graphorismo.coffeeshop.ui.products
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageButton
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
@@ -16,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import ru.graphorismo.coffeeshop.R
-import ru.graphorismo.coffeeshop.data.auth.AuthResponse
 
 @AndroidEntryPoint
 class ProductsActivity : AppCompatActivity() {
