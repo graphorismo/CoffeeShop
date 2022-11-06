@@ -36,6 +36,9 @@ class ProductsRecyclerAdapter(var productsViewModel: ProductsViewModel):
         holder.productDescription.text =
             items[position].name + "\nPrice:" + items[position].price
         holder.productImage.load(items[position].pictureUrl)
+        holder.productAddToCartButton.setOnClickListener(){
+            productsViewModel.addToCart(items[position])
+        }
     }
 
     override fun getItemCount(): Int {

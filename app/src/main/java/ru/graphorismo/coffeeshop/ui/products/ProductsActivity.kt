@@ -3,6 +3,7 @@ package ru.graphorismo.coffeeshop.ui.products
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
@@ -50,7 +51,26 @@ class ProductsActivity : AppCompatActivity() {
 
         observeShowProducts()
         observeShowState()
+        observeCartResponses()
 
+    }
+
+    private fun observeCartResponses() {
+        lifecycleScope.launch() {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                productsViewModel.cartPutStatus.collect() {
+                    if(it.status == "none") {
+                        //none
+                    }else if(it.status == "ok"){
+                        Toast.makeText(this@ProductsActivity,
+                            "Product added to the cart", Toast.LENGTH_LONG).show()
+                    }else if(it.status == "net_error"){
+                        Toast.makeText(this@ProductsActivity,
+                            "Cart's network error", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        }
     }
 
     private fun observeShowProducts(){
