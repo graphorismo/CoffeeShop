@@ -9,13 +9,16 @@
     android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cartActivity_recyclerView_orders"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.2"
         android:layout_margin="10dp"
-        android:background="@color/orange"/>
+        android:background="@color/orange"
+        tools:listitem="@layout/cart_item"/>
 
     <TextView
+        android:id="@+id/cartActivity_textView_priceSum"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.65"
@@ -23,6 +26,7 @@
         android:background="@color/orange"/>
 
     <Button
+        android:id="@+id/cartActivity_button_buy"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.65"
@@ -31,6 +35,7 @@
         android:layout_margin="10dp"/>
 
     <Button
+        android:id="@+id/cartActivity_button_back"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.65"
