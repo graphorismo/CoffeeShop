@@ -1,5 +1,6 @@
 package ru.graphorismo.coffeeshop.ui.products
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import ru.graphorismo.coffeeshop.R
+import ru.graphorismo.coffeeshop.ui.cart.CartActivity
 
 @AndroidEntryPoint
 class ProductsActivity : AppCompatActivity() {
@@ -24,6 +26,7 @@ class ProductsActivity : AppCompatActivity() {
     lateinit var snacksButton: ImageButton
     lateinit var milkshakesButton: ImageButton
     lateinit var alcoholButton: ImageButton
+    lateinit var cartButton: ImageButton
 
     lateinit var productsRecycler: RecyclerView
     lateinit var productsRecyclerAdapter: ProductsRecyclerAdapter
@@ -36,6 +39,7 @@ class ProductsActivity : AppCompatActivity() {
         snacksButton = findViewById(R.id.productsActivity_button_snacks)
         milkshakesButton = findViewById(R.id.productsActivity_button_milkshakes)
         alcoholButton  = findViewById(R.id.productsActivity_button_alcohol)
+        cartButton = findViewById(R.id.productsActivity_button_cart)
 
         productsRecycler = findViewById(R.id.productsActivity_recyclerView_products)
 
@@ -43,6 +47,7 @@ class ProductsActivity : AppCompatActivity() {
         snacksButton.setOnClickListener() {showSnacksProducts()}
         milkshakesButton.setOnClickListener() {showMilkshakesProducts()}
         alcoholButton.setOnClickListener() {showAlcoholProducts()}
+        cartButton.setOnClickListener() {switchToCartActivity()}
 
         productsRecycler.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -53,6 +58,12 @@ class ProductsActivity : AppCompatActivity() {
         observeShowState()
         observeCartResponses()
 
+    }
+
+    private fun switchToCartActivity() {
+        val cartIntent =
+            Intent(this@ProductsActivity, CartActivity::class.java)
+        startActivity(cartIntent)
     }
 
     private fun observeCartResponses() {
