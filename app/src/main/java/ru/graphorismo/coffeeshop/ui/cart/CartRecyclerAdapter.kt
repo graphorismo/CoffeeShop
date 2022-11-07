@@ -9,13 +9,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import ru.graphorismo.coffeeshop.R
+import ru.graphorismo.coffeeshop.data.products.Order
 import ru.graphorismo.coffeeshop.data.products.Product
 import ru.graphorismo.coffeeshop.ui.products.ProductsViewModel
 
 class CartRecyclerAdapter(cartViewModel: CartViewModel):
     RecyclerView.Adapter<CartRecyclerAdapter.CartRecyclerViewHolder>()
 {
-    var items : List<Product> = listOf()
+    var items : List<Order> = listOf()
 
     inner class CartRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var productImage : ImageView =
@@ -35,8 +36,12 @@ class CartRecyclerAdapter(cartViewModel: CartViewModel):
 
     override fun onBindViewHolder(holder: CartRecyclerViewHolder, position: Int) {
         holder.productDescription.text =
-            items[position].name + "\nPrice:" + items[position].price
-        holder.productImage.load(items[position].pictureUrl)
+            items[position].product.name +
+                    "\nPrice:" +
+                    items[position].product.price +
+                    ",   Amount:" +
+                    items[position].amount
+        holder.productImage.load(items[position].product.pictureUrl)
     }
 
     override fun getItemCount(): Int {

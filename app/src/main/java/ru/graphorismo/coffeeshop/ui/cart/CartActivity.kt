@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import ru.graphorismo.coffeeshop.R
+import ru.graphorismo.coffeeshop.data.products.Order
 import ru.graphorismo.coffeeshop.ui.products.ProductsActivity
 
 @AndroidEntryPoint
@@ -58,10 +59,17 @@ class CartActivity : AppCompatActivity() {
         lifecycleScope.launch() {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 cartViewModel.orders.collect() {
-                    recyclerAdapter.items = cartViewModel.orders.value.map { it.product }
+                    recyclerAdapter.items = cartViewModel.orders.value
+                    showTotalPriceForOrders(cartViewModel.orders.value)
                     recyclerAdapter.notifyDataSetChanged()
                 }
             }
         }
+    }
+
+    private fun showTotalPriceForOrders(orders: MutableList<Order>) {
+        var sumPrices = orders.map { it.amount * it.product.price}
+        var totalPrice = sumPrices.sum()
+        textViewSum.text = "Total price: $totalPrice"
     }
 }
