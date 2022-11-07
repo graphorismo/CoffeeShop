@@ -10,11 +10,19 @@ class CartRepository @Inject constructor(private var authRepository: AuthReposit
 
     suspend fun putOrder(order: Order): CartResponse{
         try{
-            return coffeeShopApi.pushCartPost(order, authRepository.token)
+            return coffeeShopApi.pushCartPostAdd(order, authRepository.token)
         }catch (ex: Exception){
             return CartResponse("net_error")
         }
 
+    }
+
+    suspend fun removeOrder(order: Order): CartResponse{
+        try {
+            return coffeeShopApi.pushCartPostRemove(order, authRepository.token)
+        }catch (ex: Exception){
+            return CartResponse("net_error")
+        }
     }
 
     suspend fun getOrders(): List<Order>{

@@ -21,9 +21,14 @@ interface CoffeeShopApi {
     @POST("/registrate")
     suspend fun pushRegistratePost(@Body credentials: Credentials): RegistrateResponse
 
-    @POST("/cart")
-    suspend fun pushCartPost(@Body order: Order,
+    @POST("/cart/add")
+    suspend fun pushCartPostAdd(@Body order: Order,
                              @Query("token") token: String): CartResponse
+
+    @POST("/cart/remove")
+    suspend fun pushCartPostRemove(@Body order: Order,
+                                @Query("token") token: String): CartResponse
+
 
     @GET("/cart")
     suspend fun getCart(@Query("token") token: String): List<Order>

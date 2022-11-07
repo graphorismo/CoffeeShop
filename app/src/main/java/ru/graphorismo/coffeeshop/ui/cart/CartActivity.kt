@@ -16,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import ru.graphorismo.coffeeshop.R
 import ru.graphorismo.coffeeshop.data.products.Order
+import ru.graphorismo.coffeeshop.data.remote.CartResponse
 import ru.graphorismo.coffeeshop.ui.products.ProductsActivity
 
 @AndroidEntryPoint
@@ -47,6 +48,7 @@ class CartActivity : AppCompatActivity() {
         buttonBack.setOnClickListener() { switchToProductsActivity() }
 
         observeCartItems()
+        observeCartResponse()
     }
 
     private fun switchToProductsActivity() {
@@ -62,6 +64,19 @@ class CartActivity : AppCompatActivity() {
                     recyclerAdapter.items = cartViewModel.orders.value
                     showTotalPriceForOrders(cartViewModel.orders.value)
                     recyclerAdapter.notifyDataSetChanged()
+                }
+            }
+        }
+    }
+
+    private fun observeCartResponse() {
+        lifecycleScope.launch() {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                cartViewModel.cartResponse.collect() {
+                    if(it.status != ""){
+                        Toast.makeText(this@CartActivity, it.status, Toast.LENGTH_LONG).show()
+                    }
+                    cartViewModel.cartResponse.value = CartResponse("")
                 }
             }
         }

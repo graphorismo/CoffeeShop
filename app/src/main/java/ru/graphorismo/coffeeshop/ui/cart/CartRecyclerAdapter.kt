@@ -13,7 +13,7 @@ import ru.graphorismo.coffeeshop.data.products.Order
 import ru.graphorismo.coffeeshop.data.products.Product
 import ru.graphorismo.coffeeshop.ui.products.ProductsViewModel
 
-class CartRecyclerAdapter(cartViewModel: CartViewModel):
+class CartRecyclerAdapter(val cartViewModel: CartViewModel):
     RecyclerView.Adapter<CartRecyclerAdapter.CartRecyclerViewHolder>()
 {
     var items : List<Order> = listOf()
@@ -42,6 +42,9 @@ class CartRecyclerAdapter(cartViewModel: CartViewModel):
                     ",   Amount:" +
                     items[position].amount
         holder.productImage.load(items[position].product.pictureUrl)
+        holder.productRemoveFromCartButton.setOnClickListener(){
+            cartViewModel.removeFromCart(items[position])
+        }
     }
 
     override fun getItemCount(): Int {
