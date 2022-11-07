@@ -19,6 +19,12 @@ object AppModule {
 
     @Singleton
     @Provides
+    fun provideAuthRepository(coffeeShopApi: CoffeeShopApi) : AuthRepository{
+        return AuthRepository(coffeeShopApi)
+    }
+
+    @Singleton
+    @Provides
     fun provideCartRepository(authRepository: AuthRepository,
                               coffeeShopApi: CoffeeShopApi) : CartRepository{
         return CartRepository(authRepository, coffeeShopApi)
@@ -29,12 +35,6 @@ object AppModule {
     fun provideProductsRepository(authRepository: AuthRepository,
                                   coffeeShopApi: CoffeeShopApi) : ProductsRepository{
         return ProductsRepository(authRepository, coffeeShopApi)
-    }
-
-    @Singleton
-    @Provides
-    fun provideAuthRepository(coffeeShopApi: CoffeeShopApi) : AuthRepository{
-        return AuthRepository(coffeeShopApi)
     }
 
     @Singleton
