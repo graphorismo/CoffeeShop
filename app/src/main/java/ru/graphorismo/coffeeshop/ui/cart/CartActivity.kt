@@ -46,6 +46,7 @@ class CartActivity : AppCompatActivity() {
         recyclerView.adapter = recyclerAdapter
 
         buttonBack.setOnClickListener() { switchToProductsActivity() }
+        buttonBuy.setOnClickListener() {cartViewModel.clearCart()}
 
         observeCartItems()
         observeCartResponse()

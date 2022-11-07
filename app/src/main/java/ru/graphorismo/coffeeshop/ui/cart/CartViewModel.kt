@@ -34,4 +34,11 @@ class CartViewModel @Inject constructor(val cartRepository: CartRepository) : Vi
             orders.value = cartRepository.getOrders().toMutableList()
         }
     }
+
+    fun clearCart(){
+        viewModelScope.launch(Dispatchers.IO)  {
+            cartResponse.value = cartRepository.clearCart()
+            orders.value = cartRepository.getOrders().toMutableList()
+        }
+    }
 }

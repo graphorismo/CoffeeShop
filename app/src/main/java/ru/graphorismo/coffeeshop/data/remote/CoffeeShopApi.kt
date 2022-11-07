@@ -29,9 +29,13 @@ interface CoffeeShopApi {
     suspend fun pushCartPostRemove(@Body order: Order,
                                 @Query("token") token: String): CartResponse
 
+    @POST("/cart/clear")
+    suspend fun pushCartPostClear(@Query("token") token: String): CartResponse
 
     @GET("/cart")
     suspend fun getCart(@Query("token") token: String): List<Order>
+
+
 
 
 }

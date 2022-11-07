@@ -32,4 +32,12 @@ class CartRepository @Inject constructor(private var authRepository: AuthReposit
             return listOf()
         }
     }
+
+    suspend fun clearCart(): CartResponse {
+        try {
+            return coffeeShopApi.pushCartPostClear(authRepository.token)
+        }catch (ex: Exception){
+            return CartResponse("net_error")
+        }
+    }
 }
