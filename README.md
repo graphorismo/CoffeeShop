@@ -1,7 +1,6 @@
 # CoffeeShop
-Coffee shop app imitation with logic to sign-in/sign-up and for a cart. Backend based on ktor is in another repo ktor-coffeeshop.
-
-Stack: Activities, ViewModels, RecyclerView, Dagger Hilt, Retrofit, Coil, State Flow, Kotline Coroutines
+Приложение для кофе-магазина и бэкенд к нему. Обладает функциями server-side логина и регистрации, просмотра загруженных товаров и формирования индивидуальной корзины.
+Стек: Kotlin Flows, Activities, Dagger hilt, Retrofit, Ktor (backend), RecyclerView, ViewModel, Coil.
 
 <img src="https://user-images.githubusercontent.com/75787289/200484033-083410c0-c2df-464a-8d5c-bd17a0a856ec.png" width="150" height="280">  <img src="https://user-images.githubusercontent.com/75787289/200484384-1b8879d3-ee03-46c3-a2e1-c5a524c7529a.png" width="150" height="280">   <img src="https://user-images.githubusercontent.com/75787289/200484574-99dc3ed0-67d2-4ad7-b542-c8f27ebc50b0.png" width="150" height="280">
 
